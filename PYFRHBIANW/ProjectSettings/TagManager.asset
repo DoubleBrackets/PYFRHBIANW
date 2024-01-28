@@ -11,6 +11,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Terrain
   - 
   - 
   - 
@@ -33,10 +34,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - P3
+  - P2
+  - P1
   m_SortingLayers:
   - name: Default
     uniqueID: 0
