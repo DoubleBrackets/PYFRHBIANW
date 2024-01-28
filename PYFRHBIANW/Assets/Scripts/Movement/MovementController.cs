@@ -58,7 +58,7 @@ public class MovementController : MonoBehaviour
 
     public void TryStartJump()
     {
-        if (CurrentContext.isStableGrounded || CurrentContext.groundedTime < config.CoyoteTime)
+        if (CurrentContext.isStableGrounded || CurrentContext.airborneTime < config.CoyoteTime)
         {
             rb.velocity = new Vector3(rb.velocity.x, config.JumpVelocity, rb.velocity.z);
             ungroundTime = 0.1f;
@@ -117,7 +117,7 @@ public class MovementController : MonoBehaviour
         if (Vector3.Dot(targetVel, currentVel) >= 0)
         {
             newVel = Vector3.MoveTowards(currentVel, targetVel,
-                Mathf.MoveTowards(acceleration, 0, friction) * deltaTime);
+                Mathf.MoveTowards(acceleration, 0, currentVel.magnitude > maxSpeed ? friction : 0) * deltaTime);
         }
         // Decreasing
         else
@@ -179,6 +179,10 @@ public class MovementController : MonoBehaviour
         if (!context.isGrounded)
         {
             context.groundedTime = 0;
+        }
+        else
+        {
+            context.airborneTime = 0;
         }
     }
 

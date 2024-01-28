@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class ThirdPersonInputProvider : InputProvider, ThirdPersonActionMap.IGameplayActions
 {
@@ -10,9 +11,12 @@ public class ThirdPersonInputProvider : InputProvider, ThirdPersonActionMap.IGam
     public UnityEvent<InputAction.CallbackContext> OnLook;
     public UnityEvent<InputAction.CallbackContext> OnJump;
     public UnityEvent<InputAction.CallbackContext> OnSprint;
-    public UnityEvent<InputAction.CallbackContext> OnGrabThrow;
+    [FormerlySerializedAs("OnGrabThrow")] public UnityEvent<InputAction.CallbackContext> OnTrigger;
 
-    protected override IInputActionCollection CreateMap() => new ThirdPersonActionMap();
+    protected override IInputActionCollection CreateMap()
+    {
+        return new ThirdPersonActionMap();
+    }
 
     protected override void SetupMap()
     {
@@ -45,7 +49,7 @@ public class ThirdPersonInputProvider : InputProvider, ThirdPersonActionMap.IGam
 
     void ThirdPersonActionMap.IGameplayActions.OnTrigger(InputAction.CallbackContext context)
     {
-        OnGrabThrow?.Invoke(context);
+        OnTrigger?.Invoke(context);
     }
 
     public void OnReset(InputAction.CallbackContext context)

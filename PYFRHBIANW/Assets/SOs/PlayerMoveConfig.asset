@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: PlayerMoveConfig
   m_EditorClassIdentifier: 
   <MaxGroundSpeed>k__BackingField: 8
-  <GroundAcceleration>k__BackingField: 85
+  <GroundAcceleration>k__BackingField: 45
   <GroundFriction>k__BackingField: 40
   <MaxAirSpeed>k__BackingField: 14
-  <AirAcceleration>k__BackingField: 33
-  <AirFriction>k__BackingField: 30
+  <AirAcceleration>k__BackingField: 27
+  <AirFriction>k__BackingField: 25
   <JumpVelocity>k__BackingField: 5
   <DefaultGravity>k__BackingField: 15
   <JumpGravity>k__BackingField: 0
   <BunnyHopInterval>k__BackingField: 0.2
   <CoyoteTime>k__BackingField: 0.1
-  <MaxStableGroundedAngle>k__BackingField: 45
+  <MaxStableGroundedAngle>k__BackingField: 35
   <GroundedDistance>k__BackingField: 5.06
   <GroundedLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
   <SpherecastRadius>k__BackingField: 0.35
-  <SpherecastDistance>k__BackingField: 0.83
+  <SpherecastDistance>k__BackingField: 0.6
   <SpherecastOffset>k__BackingField: 0.03

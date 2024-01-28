@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class CombatEntity : MonoBehaviour
@@ -9,7 +10,6 @@ public class CombatEntity : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] public int CurrentHealth => currentHealth;
 
-    [SerializeField] private VFXScript deathVFX;
 
     public int MaxHealth => maxHealth;
 
@@ -18,21 +18,27 @@ public class CombatEntity : MonoBehaviour
 
     private int playerId;
 
-    public void TakeDamage(AttackInfo info, int ignorePlayerMask)
+    [Button("Die")]
+    public void Die()
+    {
+        OnDeath?.Invoke(new AttackInfo());
+    }
+
+    public bool TakeDamage(AttackInfo info, int ignorePlayerMask)
     {
         if ((ignorePlayerMask & (1 << playerId)) != 0)
         {
-            return;
+            return false;
         }
 
         currentHealth -= info.damage;
         if (currentHealth <= 0)
         {
             OnDeath?.Invoke(info);
-            Instantiate(deathVFX, transform.position, Quaternion.identity);
         }
 
         OnHit?.Invoke(info);
+        return true;
     }
 
     public void Initialize(int playerId)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7148773589512186384}
   - component: {fileID: 2989170833444991901}
   m_Layer: 0
-  m_Name: DeathVFX
+  m_Name: JumpVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 12
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4836,7 +4836,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c5de06eaff88024f84d4bf93cfe0085, type: 2}
+  - {fileID: 2100000, guid: da4651f0bff380742b41e896789b7fc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
