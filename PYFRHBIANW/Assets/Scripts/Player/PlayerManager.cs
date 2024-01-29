@@ -35,6 +35,8 @@ public class PlayerManager : MonoBehaviour
 
     private int playerNumber;
 
+    private float kb;
+
     public enum PlayerState
     {
         Default,
@@ -78,6 +80,7 @@ public class PlayerManager : MonoBehaviour
         SwitchState(PlayerState.Ragdoll);
         Debug.Log(obj.knockback);
         rb.velocity = obj.direction * obj.knockback;
+        kb = obj.knockback;
     }
 
     private void OnDeath(AttackInfo obj)
@@ -118,6 +121,12 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        if (state == PlayerState.Ragdoll)
+        {
+            rb.velocity = rb.velocity.normalized * kb;
+            thirdPersonCamera.UpdateCamera(Vector2.right, Time.deltaTime * 200000f);
+        }
+
         ragdollTimer -= Time.deltaTime;
     }
 
@@ -132,7 +141,7 @@ public class PlayerManager : MonoBehaviour
         {
             case PlayerState.Default:
                 coll.material = def;
-                model.gameObject.SetActive(true);
+                model.gameObject.GetComponent<MeshRenderer>().enabled = true;
                 shootingScript.gameObject.SetActive(true);
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
                 rb.transform.rotation = Quaternion.identity;
@@ -155,7 +164,7 @@ public class PlayerManager : MonoBehaviour
                 deadTimer = 4f;
                 Instantiate(deathVFX, model.transform.position, Quaternion.identity);
                 ScoreUI.Instance.IncrementDeath(playerNumber);
-                model.gameObject.SetActive(false);
+                model.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 break;
             default:
                 break;
@@ -168,7 +177,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (ragdollTimer <= 0f || obj.impulse.magnitude > impulseThreshold)
         {
-            SwitchState(PlayerState.Dead);
+            // SwitchState(PlayerState.Dead);
         }
     }
 

@@ -28,6 +28,6 @@ MonoBehaviour:
   <GroundedLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
-  <SpherecastRadius>k__BackingField: 0.35
-  <SpherecastDistance>k__BackingField: 0.6
+  <SpherecastRadius>k__BackingField: 0.25
+  <SpherecastDistance>k__BackingField: 0.7
   <SpherecastOffset>k__BackingField: 0.03

@@ -149,6 +149,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 47c7cb210a1556648a1eca9f1d8ee394, type: 2}
   rb: {fileID: 4080948127260307640}
   physicsCollider: {fileID: 4602290512785223556}
+  jumpSFX: {fileID: 8300000, guid: b5ab43dd94688a647a7efb3136cb1232, type: 3}
 --- !u!1 &1914764738959692440
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2962160463957493302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -426,8 +427,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6747867074130926155}
-  - {fileID: 3724561309431968971}
   - {fileID: 534531688849444330}
   - {fileID: 8311632847660725791}
   - {fileID: 5588285452993626808}
@@ -497,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 4090300446637103681}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.23059225, y: -0.20899999, z: 0.8723129}
+  m_LocalPosition: {x: 0.507, y: -0.135, z: 1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -611,7 +610,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -865,8 +864,8 @@ MonoBehaviour:
   inputProvider: {fileID: 2387909376351730339}
   deathVFX: {fileID: 2989170833444991901, guid: 242366f9fdc96a747b69e24bf12bfb5b,
     type: 3}
-  ragdollDuration: 2.5
-  impulseThreshold: 50
+  ragdollDuration: 1.75
+  impulseThreshold: 100
 --- !u!114 &2387909376351730339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,11 +937,11 @@ Transform:
   m_GameObject: {fileID: 6113711798547278596}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33, y: 0, z: 0}
+  m_LocalPosition: {x: -0.321, y: 0.122999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1131937801843590473}
+  m_Father: {fileID: 534531688849444330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &1636604372931634328
 TrailRenderer:
@@ -986,11 +985,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.13
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1017,34 +1016,34 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3254717, g: 0.99346316, b: 1, a: 0.84313726}
-      key1: {r: 0.98611265, g: 0.9998654, b: 1, a: 0.5529412}
-      key2: {r: 1, g: 1, b: 1, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.051886797, b: 0.8720886, a: 0.9137255}
+      key1: {r: 0.24487214, g: 0.99607843, b: 0.227451, a: 0.7411765}
+      key2: {r: 0.27058822, g: 0.88551545, b: 0.99607843, a: 0.5529412}
+      key3: {r: 0.35686275, g: 0.46500763, b: 0.99607843, a: 0.5529412}
+      key4: {r: 0.90966153, g: 0.43137258, b: 0.99607843, a: 0}
+      key5: {r: 0.99607843, g: 0.5176471, b: 0.65113205, a: 0}
+      key6: {r: 0.99607843, g: 0.77114385, b: 0.5882353, a: 0}
+      key7: {r: 0.99607843, g: 0.9848082, b: 0.5882353, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
+      ctime1: 11437
+      ctime2: 20046
+      ctime3: 28142
+      ctime4: 37008
+      ctime5: 49601
+      ctime6: 60010
+      ctime7: 65535
       atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
+      atime1: 27563
+      atime2: 65535
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumColorKeys: 8
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -1127,13 +1126,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9108551663344172877}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.770797, z: -0, w: 0.6370809}
-  m_LocalPosition: {x: 0.301, y: -0.15799999, z: 0.505}
+  m_LocalRotation: {x: 0, y: -0.6565199, z: 0, w: 0.75430876}
+  m_LocalPosition: {x: 0.457, y: -0.12, z: 0.645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8311632847660725791}
-  m_LocalEulerAnglesHint: {x: 0, y: -100.851, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -82.07, z: 0}
 --- !u!212 &3245030675257552527
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1205,6 +1204,7 @@ MonoBehaviour:
   cooldown: 0.33
   attackConfig: {fileID: 11400000, guid: 28ab470b79467614e87b849c369d7d4e, type: 2}
   projectileSpeed: 25
+  shootSFX: {fileID: 8300000, guid: 28f56982bbf243141b57ed073e4deb5a, type: 3}
 --- !u!1 &9182403503440545052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,11 +1231,11 @@ Transform:
   m_GameObject: {fileID: 9182403503440545052}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.321, y: 0, z: 0}
+  m_LocalPosition: {x: 0.321, y: 0.122999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1131937801843590473}
+  m_Father: {fileID: 534531688849444330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &5318315926819093853
 TrailRenderer:
@@ -1279,11 +1279,11 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.13
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1310,34 +1310,34 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3254717, g: 0.99346316, b: 1, a: 0.84313726}
-      key1: {r: 0.98611265, g: 0.9998654, b: 1, a: 0.5529412}
-      key2: {r: 1, g: 1, b: 1, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.051886797, b: 0.8720886, a: 0.9137255}
+      key1: {r: 0.24487214, g: 0.99607843, b: 0.227451, a: 0.7411765}
+      key2: {r: 0.27058822, g: 0.88551545, b: 0.99607843, a: 0.5529412}
+      key3: {r: 0.35686275, g: 0.46500763, b: 0.99607843, a: 0.5529412}
+      key4: {r: 0.90966153, g: 0.43137258, b: 0.99607843, a: 0}
+      key5: {r: 0.99607843, g: 0.5176471, b: 0.65113205, a: 0}
+      key6: {r: 0.99607843, g: 0.77114385, b: 0.5882353, a: 0}
+      key7: {r: 0.99607843, g: 0.9848082, b: 0.5882353, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
+      ctime1: 11437
+      ctime2: 20046
+      ctime3: 28142
+      ctime4: 37008
+      ctime5: 49601
+      ctime6: 60010
+      ctime7: 65535
       atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
+      atime1: 27563
+      atime2: 65535
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumColorKeys: 8
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -1415,7 +1415,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c58b66d2242750c4c92782e034a532da,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6747867074130926155}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c58b66d2242750c4c92782e034a532da,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3724561309431968971}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c58b66d2242750c4c92782e034a532da, type: 3}
 --- !u!4 &534531688849444330 stripped

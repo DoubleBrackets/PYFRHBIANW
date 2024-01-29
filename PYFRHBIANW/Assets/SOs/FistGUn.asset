@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Info>k__BackingField:
     damage: 0
-    knockback: 50
+    knockback: 40
     direction: {x: 0, y: 0, z: 0}
     stunning: 0

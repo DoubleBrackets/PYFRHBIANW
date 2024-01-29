@@ -7,6 +7,7 @@ public class KillScript : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(gameObject.name);
         var combatEntity = other.collider.GetComponent<CombatEntity>();
         if (combatEntity != null)
         {

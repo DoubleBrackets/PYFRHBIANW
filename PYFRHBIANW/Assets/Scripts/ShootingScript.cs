@@ -19,6 +19,8 @@ public class ShootingScript : MonoBehaviour
 
     [SerializeField] private float projectileSpeed;
 
+    [SerializeField] private AudioClip shootSFX;
+
     private int playerId;
 
     private float cooldownTimer;
@@ -45,6 +47,7 @@ public class ShootingScript : MonoBehaviour
             return;
         }
 
+        SFXOneshotPlayer.Instance.PlaySFXOneshot(shootSFX);
         cooldownTimer = cooldown;
         var projectile = Instantiate(fistProjectile, fistGunBarrel.position, fistGunBarrel.rotation);
         projectile.InitializeProjectile(fistGunBarrel.forward, projectileSpeed, attackConfig.Info, playerId);

@@ -11,6 +11,8 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] private Collider physicsCollider;
 
+    [SerializeField] private AudioClip jumpSFX;
+
     [field: SerializeField] public MovementContext CurrentContext { get; private set; }
 
     private void Awake()
@@ -29,7 +31,7 @@ public class MovementController : MonoBehaviour
         public float airborneTime;
     }
 
-    private float ungroundTime = 0.1f;
+    private float ungroundTime;
 
     public void UpdateMovement(Vector2 input, float deltaTime, Transform cameraTransform)
     {
@@ -58,16 +60,22 @@ public class MovementController : MonoBehaviour
 
     public void TryStartJump()
     {
+        if (ungroundTime > 0f)
+        {
+            return;
+        }
+
         if (CurrentContext.isStableGrounded || CurrentContext.airborneTime < config.CoyoteTime)
         {
             rb.velocity = new Vector3(rb.velocity.x, config.JumpVelocity, rb.velocity.z);
-            ungroundTime = 0.1f;
+            SFXOneshotPlayer.Instance.PlaySFXOneshot(jumpSFX);
+            ungroundTime = 0.15f;
         }
     }
 
     private void SnapToGround(ref MovementContext context)
     {
-        rb.AddForce(Vector3.down * config.DefaultGravity);
+        rb.AddForce(-context.normal * config.DefaultGravity);
         var isMovingAwayFromGround = Vector3.Dot(rb.velocity, context.normal) > 0f;
         if (context.isGrounded && isMovingAwayFromGround)
         {
@@ -189,10 +197,10 @@ public class MovementController : MonoBehaviour
     private Vector2 GetRawNormal(Vector3 hitPos, Vector3 collHitCenter)
     {
         var vecToHitPos = hitPos - collHitCenter;
-        var didHit = Physics.Raycast(collHitCenter - vecToHitPos.normalized * 0.1f,
+        var didHit = Physics.Raycast(collHitCenter - vecToHitPos.normalized * 0.5f,
             vecToHitPos.normalized,
             out var hitInfo,
-            vecToHitPos.magnitude + 0.5f,
+            vecToHitPos.magnitude + 0.6f,
             config.GroundedLayerMask,
             QueryTriggerInteraction.Ignore);
 

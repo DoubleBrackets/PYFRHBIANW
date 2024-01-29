@@ -9,6 +9,8 @@ public class ProjectileScript : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private AttackInfo attackInfo;
 
+    [SerializeField] private VFXScript impactVFX;
+
     private int playerId;
 
     public void InitializeProjectile(Vector3 direction, float speed, AttackInfo attackInfo, int playerId)
@@ -30,6 +32,7 @@ public class ProjectileScript : MonoBehaviour
             var didTakeDamage = combatEntity.TakeDamage(info, 1 << playerId);
             if (didTakeDamage)
             {
+                var vfx = Instantiate(impactVFX, transform.position, quaternion.identity);
                 Destroy(gameObject);
             }
         }
